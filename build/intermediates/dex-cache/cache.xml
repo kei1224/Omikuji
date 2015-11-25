@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\慧\Downloads\Android入門AS\サンプル\第６章\Omikuji\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\慧\Downloads\Android入門AS\サンプル\第６章\Omikuji\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-e1336850783ddaa815f7a67b045bea6945acf8b6.jar" />
+    </item>
+    <item
+        jar="C:\Android\SDK\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\慧\Downloads\Android入門AS\サンプル\第６章\Omikuji\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-48d42d67d00135a75e70306d34b11dd7ec30ce10.jar" />
+    </item>
+    <item
+        jar="C:\AStudioWorkspace\Omikuji\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\AStudioWorkspace\Omikuji\app\build\intermediates\pre-dexed\debug\classes-c16a04185d7c55315c9e12e6373b34e5c1562add.jar" />
+    </item>
+    <item
+        jar="C:\Users\慧\Downloads\Android入門AS\サンプル\第６章\Omikuji\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\慧\Downloads\Android入門AS\サンプル\第６章\Omikuji\app\build\intermediates\pre-dexed\debug\classes-4b1ed81f0c2716128c175fd309099951819b284e.jar" />
+    </item>
+    <item
+        jar="C:\Users\慧\Downloads\Android入門AS\サンプル\第６章\Omikuji\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\慧\Downloads\Android入門AS\サンプル\第６章\Omikuji\app\build\intermediates\pre-dexed\debug\classes-e5f6983e6bcdc315b93e54358bff701952b583f6.jar" />
+    </item>
+    <item
+        jar="C:\AStudioWorkspace\Omikuji\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\AStudioWorkspace\Omikuji\app\build\intermediates\pre-dexed\debug\classes-ed39bf8bd90e15591f0c87f0876f871ab13503fa.jar" />
+    </item>
+    <item
+        jar="C:\AStudioWorkspace\Omikuji\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\AStudioWorkspace\Omikuji\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-0b99d0e7a5ec52c9690fd49a062878c1509fa6b0.jar" />
+    </item>
+
+</items>
