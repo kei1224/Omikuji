@@ -19,7 +19,7 @@ public class AboutActivity extends Activity {
         PackageManager pm = getPackageManager();
         try {
             PackageInfo info = pm.getPackageInfo(getPackageName(), 0);
-            TextView tv = (TextView)findViewById(R.id.textview2);
+            TextView tv = (TextView)findViewById(R.id.textView2);
             tv.setText("Version " + info.versionName);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();

@@ -4,7 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,10 +19,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.List;
 
 
-public class OmikujiActivity extends Activity {
+public class OmikujiActivity extends Activity implements SensorEventListener{
+    private SensorManager manager;
+    private Vibrator vibrator;
 
     // おみくじ棚の配列
     private OmikujiParts[]  omikujiShelf = new OmikujiParts[20];
@@ -28,6 +36,10 @@ public class OmikujiActivity extends Activity {
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
             if (0 < this.omikujibox.getNumber()) {
+                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+                if(pref.getBoolean("vibration", true)){
+                    this.vibrator.vibrate(50);
+                }
                 this.drawResult();
             }
         }
@@ -43,6 +55,9 @@ public class OmikujiActivity extends Activity {
         if (item.getItemId() == R.id.item1){
             Intent intent = new Intent(this, OmikujiPreferenceActivity.class);
             startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -57,9 +72,29 @@ public class OmikujiActivity extends Activity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        this.manager.unregisterListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        List<Sensor> sensors = this.manager.getSensorList(Sensor.TYPE_ACCELEROMETER);
+        if (0 < sensors.size()){
+            this.manager.registerListener(this, sensors.get(0), SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.omikuji);
+
+        this.vibrator = (Vibrator)getSystemService(VIBRATOR_SERVICE);
+        this.manager = (SensorManager)getSystemService(SENSOR_SERVICE);
+
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         boolean value = pref.getBoolean("button", false);
 
@@ -148,5 +183,26 @@ public class OmikujiActivity extends Activity {
         image.setImageResource(R.drawable.result1);
         setContentView(image);
     */
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        if(this.omikujibox.chkShake(sensorEvent)){
+            if(this.omikujibox.getNumber() < 0){
+                this.omikujibox.shake();
+            }
+        }
+        /*
+        float value = sensorEvent.values[0];
+        if(7 < value){
+            Toast toast = Toast.makeText(this, "加速度：" + value, Toast.LENGTH_LONG);
+            toast.show();
+        }
+        */
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
     }
 }

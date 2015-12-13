@@ -1,5 +1,6 @@
 package jp.wings.nikkeibp.omikuji;
 
+import android.hardware.SensorEvent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
@@ -8,10 +9,11 @@ import android.widget.ImageView;
 
 import java.util.Random;
 
-/**
- * Created by wings on 2015/06/27.
- */
+
 public class OmikujiBox implements Animation.AnimationListener {
+    private long beforeTime;
+    private float beforeValue;
+
     private int number; // くじ番号
     private ImageView imageView;
 
@@ -21,6 +23,25 @@ public class OmikujiBox implements Animation.AnimationListener {
 
     public OmikujiBox() {
         this.number = -1;
+    }
+
+    public boolean chkShake(SensorEvent event){
+        long now_time = System.currentTimeMillis();
+        long diff_time = now_time - this.beforeTime;
+        float now_value = event.values[0] + event.values[1];
+
+        if(1500 < diff_time){
+            // 前回の値との差からスピードを計算
+            float speed = Math.abs(now_value - this.beforeValue) / diff_time * 10000;
+            this.beforeTime = now_time;
+            this.beforeValue = now_value;
+
+            //50を超えるスピードでシェイクしたとみなす
+            if(50 < speed){
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getNumber() {
